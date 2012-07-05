@@ -78,3 +78,22 @@
           t)
       (append (flatten (list (car t)))
               (flatten (cdr t)))))
+
+;; Exercise 2.30
+;; map over a tree
+(define (square-tree tree)
+  (map (lambda (subtree)
+         (if (pair? subtree)
+             (square-tree subtree)
+             (square subtree)))
+       tree))
+
+;; Exercise 2.31
+(define (tree-map proc tree)
+  (map (lambda (subtree)
+         (if (pair? subtree)
+             (tree-map proc subtree)
+             (proc subtree)))
+       tree))
+
+(define (sq-tree-2 tree) (tree-map square tree))

@@ -7,11 +7,21 @@ global.cons = function (x, y) {
 }
 
 global.car = function (p) {
-    return p[0];
+    var result = p[0];
+    if ( result === undefined ) {
+		return [];
+	} else {
+		return result;
+	}
 }
 
 global.cdr = function (p) {
-    return p[1];
+    var result = p[1];
+    if ( result === undefined ) {
+		return [];
+	} else {
+		return result;
+	}
 }
 
 global.expt = function (b, p) {
