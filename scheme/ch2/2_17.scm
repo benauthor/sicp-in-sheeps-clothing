@@ -4,7 +4,7 @@
       l
       (last-pair (cdr l))))
 
-;; Exercis 2.18
+;; Exercise 2.18
 (define (append list1 list2)
    (if (null? list1)
        list2
