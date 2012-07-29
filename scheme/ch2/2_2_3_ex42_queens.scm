@@ -54,18 +54,19 @@
 (define (adjoin-position row column board)
   (add-queen (queen row column) board))
 
-(define (safe? k board) "hmmm")
-  ;; this is where I get hung up
-;; why does safe? only take the column and the other existing positions as an arg?
-;; it presupposes we are adding a row (at bottom?) so row is a given I guess
-;; but it is a strange way of conceptualizing it
-  
+(define (safe? k board) 
+  (cond ((null? board) 1)
+        ((member #t (map ;; check columns. this doesn't work because member returns a list
+                     (lambda (item) (= (cdr item) k))
+                     board))
+         0))) ;; still need to check diagonals.
+                     
 
-(define (is-safe? proposed-queen board)
-  (and (not (place-already-occupied? proposed-queen board))
-       (safe-diagonal? proposed-queen board); diagonal will be the tricky one
-       (safe-horizontal? proposed-queen board); not necessary, because we're placing on a new line
-       (safe-vertical? proposed-queen board)))
+;(define (is-safe? proposed-queen board)
+;  (and (not (place-already-occupied? proposed-queen board))
+;       (safe-diagonal? proposed-queen board); diagonal will be the tricky one
+;       (safe-horizontal? proposed-queen board); not necessary, because we're placing on a new line
+;       (safe-vertical? proposed-queen board)))
 
 ;; looking at how people do it I need less of a representation than I want to write
 ;; http://community.schemewiki.org/?sicp-ex-2.42
