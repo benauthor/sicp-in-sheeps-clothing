@@ -1,13 +1,15 @@
-// basic unordered set representation based on SICP 2.3.3 (exercise 2.59)
+// basic unordered set representation, based on SICP 2.3.3 (exercise 2.59)
 
-var Set = function(things) {
+var Set = function (things) {
+
+    'use strict';
 
     this.items = [];
 
-    this.init = function(things){
+    this.init = function (things) {
 
         // add all 'things' to the new set
-        if (things !== undefined){
+        if (things !== undefined) {
 
             var i = things.length;
 
@@ -16,9 +18,9 @@ var Set = function(things) {
             }
 
         }
-    }
+    };
 
-    this.has_element = function(thing){
+    this.has_element = function (thing) {
         //is element in the set?
 
         var i = this.items.length;
@@ -29,10 +31,10 @@ var Set = function(things) {
             }
         }
         return false;
-    }
+    };
 
 
-    this.adjoin = function(thing){
+    this.adjoin = function (thing) {
 
         // adjoin an item to the set
 
@@ -42,9 +44,9 @@ var Set = function(things) {
             this.items.push(thing);
             return this;
         }
-    }
+    };
 
-    this.intersection = function(set){
+    this.intersection = function (set) {
 
         //return the intersection of two sets
 
@@ -58,9 +60,9 @@ var Set = function(things) {
         }
 
         return result;
-    }
+    };
 
-    this.union = function(set){
+    this.union = function (set) {
 
         //return the union of two sets
 
@@ -74,13 +76,13 @@ var Set = function(things) {
         }
 
         return result;
-    }
+    };
 
     this.init(things);
 
-}
+};
 
-var s = new Set([1,2,3]);
+var s = new Set([1, 2, 3]);
 s.adjoin(4);
 s.adjoin(4);
 
@@ -91,5 +93,5 @@ p.adjoin(5);
 console.log(s.items);
 console.log(p.items);
 
-console.log(s.intersection(p.items))
-console.log(s.union(p.items))
+console.log(s.intersection(p.items));
+console.log(s.union(p.items));
